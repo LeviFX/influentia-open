@@ -1,0 +1,1153 @@
+@import "media";
+@import "keyframes";
+
+/* cabin-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: "Cabin Google";
+	font-style: normal;
+	font-weight: 400;
+	src: url("./fonts/cabin-v26-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+ */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: #fcfbfa;
+}
+
+main {
+	min-height: 100vh;
+	&.flex {
+		display: flex;
+		align-items: center;
+	}
+}
+
+nav {
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 80px;
+	backdrop-filter: blur(16px);
+	background-color: #ffffff27;
+	display: flex;
+	align-items: center;
+	font-family: "Cabin Google", sans-serif;
+	transition: 1.5s;
+	h1 {
+		font-family: "New Times Roman";
+		color: #e4b83f;
+		padding: 20px;
+		font-size: 0.85em;
+		letter-spacing: 1px;
+		transition: 0.3s;
+		&:hover {
+			letter-spacing: 4px;
+			transform: skew(-11deg);
+			transition: 0.45s ease;
+		}
+	}
+	.backdrop {
+		position: relative;
+		height: 80px;
+		width: 80px;
+		transition: height 0.8s;
+		span {
+			position: absolute;
+			height: 50%;
+			width: 50%;
+			background-color: #0d3317;
+			&:nth-child(1) {
+				opacity: 0;
+				height: 100%;
+				animation: 1s ease Top forwards;
+				animation-delay: 0.2s;
+				left: 0;
+			}
+			&:nth-child(2) {
+				opacity: 0;
+				width: 100%;
+				animation: 1s ease Left forwards;
+				animation-delay: 1s;
+				bottom: 0;
+			}
+			&:nth-child(3) {
+				opacity: 0;
+				height: 50%;
+				animation: 1.3s ease Down forwards;
+				animation-delay: 2.2s;
+				right: 0;
+			}
+		}
+		.logo {
+			position: relative;
+			height: 100%;
+			width: 100%;
+			img {
+				margin: auto auto;
+				max-width: 50px;
+				max-height: 50px;
+				transition: 0.3s;
+			}
+			&:hover {
+				img {
+					transform: scale(0.88);
+					transition: 0.3s;
+				}
+			}
+		}
+	}
+	ul {
+		list-style-type: none;
+		margin-left: auto;
+		margin-right: 5%;
+		height: 100%;
+		li {
+			display: inline-block;
+			width: 110px;
+			text-align: center;
+			height: 100%;
+			margin-left: 5px;
+			margin-right: 5px;
+			a {
+				mix-blend-mode: difference;
+			}
+		}
+	}
+	.nav-hamburger {
+		margin-right: 4%;
+		display: none;
+		top: 40%;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 50px;
+		width: 50px;
+		cursor: pointer;
+		.line {
+			width: 24px;
+			height: 3px;
+			background-color: #355f40;
+			mix-blend-mode: difference;
+			margin: 2px;
+			transition: 0.3s;
+			&.l1 {
+				margin-bottom: 2px;
+				margin-top: 0;
+			}
+			&.l3 {
+				margin-bottom: 0px;
+				margin-top: 2px;
+			}
+		}
+	}
+	a {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #141414;
+		font-size: 21px;
+		height: 100%;
+		transition: 0.1s;
+		&:hover {
+			color: #0d3317;
+			transition: 0.3s;
+		}
+	}
+	@include responsive(1) {
+		height: 60px;
+		justify-content: space-between;
+		&.open {
+			position: fixed;
+			background-color: rgba(0, 0, 0, 0.363);
+			height: 30vh;
+			margin-top: 50%;
+			transition: 2.3s;
+			box-shadow: 0px 0px 22px -6px rgba(0, 0, 0, 0.5);
+			flex-direction: column;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+			align-content: center;
+			.backdrop {
+				height: 55px;
+				width: 55px;
+				transition: height 0.8s;
+			}
+			ul {
+				display: flex;
+				justify-content: center;
+				width: 50%;
+				margin-right: 0;
+				li {
+					display: block;
+					height: 25%;
+					width: auto;
+					a {
+						font-size: 4.1vw;
+						mix-blend-mode: normal;
+						color: #fff;
+					}
+				}
+			}
+			.nav-hamburger {
+				margin-right: 0;
+				.line {
+					mix-blend-mode: normal;
+					background-color: #fff;
+					transition: 0.3s;
+					&.l1 {
+						transform: rotate(-45deg) translate(1px, 3px);
+						margin: 0;
+					}
+					&.l2 {
+						margin: 0;
+						width: 0;
+						height: 0;
+					}
+					&.l3 {
+						transform: rotate(45deg) translate(0px, -3px);
+						margin: 0;
+					}
+				}
+			}
+		}
+
+		.logo-title {
+			display: none;
+		}
+		ul {
+			display: none;
+			flex-direction: column;
+			align-items: center;
+		}
+		.nav-hamburger {
+			display: flex;
+		}
+		li {
+			display: none;
+		}
+		.backdrop {
+			height: 60px;
+			width: 60px;
+			.logo {
+				img {
+					max-width: 34px;
+					max-height: 34px;
+				}
+			}
+		}
+	}
+}
+
+.form-wrap {
+	padding-top: 5%;
+	padding-bottom: 5%;
+	display: flex;
+	justify-content: space-evenly;
+	.contact-form {
+		position: relative;
+		width: 60%;
+		flex-direction: column;
+		align-items: center;
+		input {
+			width: 100%;
+			height: 70px;
+			padding: 0px 15px 0px 15px;
+			background: transparent;
+			outline: none;
+			color: #726659;
+			border: solid 1px #b3aca7;
+			border-bottom: none;
+			transition: all 0.3s ease-in-out;
+			font-size: clamp(15px, 0.75vw, 0.8vw);
+			&:hover {
+				background: #f5f2ee;
+			}
+			&:focus::placeholder {
+				opacity: 0.25;
+			}
+			&:first-of-type {
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+		}
+		select {
+			width: 100%;
+			height: 70px;
+			padding: 0px 15px 0px 15px;
+			background: transparent;
+			outline: none;
+			color: #726659;
+			border: solid 1px #b3aca7;
+			border-bottom: none;
+			transition: all 0.3s ease-in-out;
+			font-size: clamp(15px, 0.75vw, 0.8vw);
+			&:hover {
+				background: #f5f2ee;
+			}
+		}
+		textarea {
+			min-width: 100%;
+			max-width: 100%;
+			height: 195px;
+			max-height: 400px;
+			padding: 15px;
+			background: transparent;
+			outline: none;
+			color: #726659;
+			border: solid 1px #b3aca7;
+			transition: all 0.3s ease-in-out;
+			font-family: "Cabin Google", sans-serif;
+			font-size: clamp(15px, 0.75vw, 0.8vw);
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			&:hover {
+				background: #f5f2ee;
+			}
+			&:focus::placeholder {
+				opacity: 0.25;
+			}
+		}
+		#contact-submit {
+			width: 32%;
+			padding: 0;
+			margin: 30px 0px 0px 0px;
+			font-size: clamp(15px, 0.75vw, 0.8vw);
+			color: #000;
+			outline: none;
+			border-top-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			float: right;
+			cursor: pointer;
+			border: solid 1px #b3aca7;
+			&:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+			@include responsive(-1) {
+				&:hover:enabled {
+					color: #000;
+					width: 37%;
+					border-top-left-radius: 0px;
+					border-bottom-right-radius: 0px;
+					border-bottom-left-radius: 10px;
+					border-top-right-radius: 10px;
+				}
+			}
+		}
+	}
+	.contact-info {
+		display: flex;
+		height: auto;
+		width: auto;
+		padding-right: 3%;
+		padding-top: 3%;
+		padding-left: 1%;
+		padding-bottom: 1%;
+		flex-direction: column;
+		align-items: flex-end;
+		font-family: "Cabin Google", sans-serif;
+		h3 {
+			font-size: clamp(16px, 1.1vw, 1.2vw);
+			padding-bottom: 25px;
+		}
+		ul {
+			list-style-type: none;
+			right: 0;
+			float: right;
+			text-align: left;
+			padding-bottom: 35px;
+			li {
+				display: flex;
+				align-items: center;
+				a {
+					color: #000;
+					text-decoration: none;
+					display: flex;
+					align-items: center;
+				}
+				svg {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+	@include responsive(1) {
+		flex-direction: column;
+		align-items: center;
+		.contact-form {
+			width: 100%;
+			input,
+			select {
+				height: 5.5vh;
+			}
+			textarea {
+				height: 19vh;
+			}
+			#contact-submit {
+				float: none;
+				width: 100%;
+			}
+		}
+		.contact-info {
+			margin-top: 25px;
+			margin-bottom: 25px;
+			border: none;
+			align-items: center;
+			width: 100%;
+			ul {
+				padding-bottom: 25px;
+			}
+			h3 {
+				padding-bottom: 5px;
+			}
+		}
+	}
+}
+
+footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	height: auto;
+	background-color: #0e0e0e;
+	display: flex;
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	font-family: "Cabin Google", sans-serif;
+	.logo {
+		position: relative;
+		min-height: 110px;
+		min-width: 110px;
+		img {
+			transition: 0.3s;
+		}
+		&:hover {
+			img {
+				transform: scale(0.88);
+				transition: 0.3s;
+			}
+		}
+	}
+	.ul-wrap {
+		display: flex;
+		margin-left: auto;
+		ul {
+			list-style-type: none;
+			margin-left: 15px;
+			margin-right: 15px;
+			li {
+				color: #fff;
+				min-width: 100px;
+				text-align: center;
+				text-align: right;
+			}
+		}
+	}
+	a {
+		text-decoration: none;
+		color: #fff;
+		svg {
+			margin-right: 10px;
+			transform: translateY(-2px);
+		}
+	}
+	@include responsive(1) {
+		padding-left: 5%;
+		padding-right: 5%;
+		flex-direction: column;
+		align-items: center;
+		.logo {
+			min-height: 70px;
+			min-width: 70px;
+		}
+		.ul-wrap {
+			margin-left: 0;
+			ul li {
+				min-width: 0px;
+			}
+		}
+	}
+}
+
+.landing {
+	height: 100vh;
+	width: 100%;
+	background-color: #fcfbfa;
+	display: flex;
+	.greeting-text {
+		top: 50%;
+		position: absolute;
+		color: #ffffff;
+		font-size: 5.5vw;
+		padding-left: 5%;
+		mix-blend-mode: difference;
+		font-family: "Times New Roman", Times, serif;
+		overflow: hidden;
+		z-index: 1;
+		span {
+			display: inline-block;
+			display: none;
+			.new {
+				font-family: "Cabin Google", sans-serif;
+			}
+			div {
+				display: inline-block;
+			}
+		}
+		.text-in {
+			display: block;
+			animation: textIn 0.5s ease;
+		}
+		.text-out {
+			animation: textOut 0.5s ease-out;
+		}
+		@include responsive(1) {
+			font-size: 12.5vw;
+			color: #ffffff;
+			padding: 0;
+			width: 100%;
+			text-align: center;
+			mix-blend-mode: normal;
+		}
+	}
+	video {
+		display: block;
+		margin: auto;
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+		transition: 1.3s;
+		animation: 5s ease videoOutSmall forwards;
+		@include responsive(-1) {
+			animation: 5s ease videoOut forwards;
+			&:hover {
+				transform: scale(0.975);
+				transition: 0.3s;
+			}
+		}
+	}
+}
+
+.content-wrap {
+	width: 100%;
+	height: auto;
+	background-color: #fcfbfa;
+	position: relative;
+	&.single {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+	}
+	&.wrap-about {
+		padding-top: 1px;
+		padding-bottom: 1px;
+	}
+	&.wrap-contact {
+		background: linear-gradient(
+			150deg,
+			rgba(226, 215, 180, 0.18) 0%,
+			rgba(252, 251, 250, 0.1) 100%
+		);
+		@include responsive(1) {
+			background: #fcfbfa;
+		}
+	}
+	.go-back {
+		position: fixed;
+		left: 5%;
+		top: 11vw;
+		text-decoration: none;
+		color: #000;
+		font-family: "Cabin Google", sans-serif;
+		font-size: clamp(14px, 1vw, 1.1vw);
+		display: flex;
+		align-items: center;
+		svg {
+			margin-right: 5px;
+		}
+		@include responsive(1) {
+			top: 25vw;
+			font-size: 0;
+			left: 2%;
+		}
+	}
+	.left-hand {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: clamp(150px, 23vw, 24vw);
+		width: auto;
+		pointer-events: none;
+		user-select: none;
+		@include responsive(1) {
+			display: none;
+			top: 15%;
+			height: clamp(90px, 13vw, 14vw);
+		}
+		&.mobile {
+			display: none;
+			@include responsive(1) {
+				height: clamp(210px, 23vw, 24vw);
+				top: 0;
+				padding-right: 6px;
+				position: relative;
+				display: block;
+				float: left;
+				shape-outside: polygon(
+					28% 0,
+					55% 29%,
+					100% 65%,
+					90% 99%,
+					51% 100%,
+					15% 96%,
+					0 68%,
+					0 18%,
+					0 0
+				);
+			}
+		}
+	}
+	.right-hand {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		height: clamp(100px, 15vw, 16vw);
+		width: auto;
+		pointer-events: none;
+		user-select: none;
+		@include responsive(1) {
+			display: none;
+			bottom: 15%;
+			height: clamp(90px, 13vw, 14vw);
+		}
+		&.mobile {
+			display: none;
+			@include responsive(1) {
+				height: clamp(175px, 23vw, 24vw);
+				bottom: 0;
+				padding-left: 6px;
+				position: relative;
+				display: block;
+				float: right;
+				clear: both;
+				shape-outside: polygon(
+					41% 0,
+					100% 9%,
+					100% 65%,
+					100% 98%,
+					50% 100%,
+					24% 96%,
+					38% 40%,
+					0 16%,
+					0 0
+				);
+			}
+		}
+	}
+	.content {
+		width: 60%;
+		h2 {
+			padding-top: 2%;
+			padding-bottom: 2%;
+			font-size: clamp(45px, 3.8vw, 3.9vw);
+			font-family: "Times New Roman", Times, serif;
+			@include responsive(1) {
+				padding-top: 6%;
+				padding-bottom: 6%;
+			}
+			&.start {
+				padding-top: 0;
+				@include responsive(1) {
+					padding-top: 3%;
+				}
+			}
+		}
+		h4 {
+			padding-top: 2%;
+			padding-bottom: 2%;
+			font-size: clamp(35px, 2.4vw, 2.4vw);
+			font-family: "Times New Roman", Times, serif;
+			@include responsive(1) {
+				padding-top: 4%;
+				padding-bottom: 4%;
+			}
+		}
+		.text {
+			margin-top: 5%;
+			margin-bottom: 5%;
+		}
+		.column {
+			position: relative;
+			z-index: 1;
+			column-count: 2;
+			column-gap: 10%;
+			font-family: "Times New Roman", Times, serif;
+			.first-letter::first-letter {
+				font-weight: bold;
+				font-size: 2.8rem;
+				color: #46280c;
+			}
+			strong {
+				color: rgb(187, 148, 22);
+				font-size: clamp(26px, 2.15vw, 2.15rem);
+			}
+			p {
+				font-size: clamp(22px, 1.4vw, 1.8rem);
+			}
+			&.main {
+				column-count: 1;
+				column-gap: 0;
+				position: relative;
+				font-family: "Times New Roman", "Helvetica Neue", serif;
+				margin-bottom: 0;
+				@include responsive(-1) {
+					padding-top: 1%;
+					padding-left: 4.5%;
+					padding-right: 4.5%;
+					padding-bottom: 4.5%;
+					margin: 0 auto;
+					.text-wrap.center {
+						padding-top: 4.5%;
+						width: 65%;
+						margin: 0 auto;
+					}
+					&.left {
+						border-left: dashed 3px #b3aca7;
+						border-bottom: dashed 3px #b3aca7;
+					}
+					&.center {
+						border-right: dashed 3px #b3aca7;
+					}
+				}
+				@include responsive(-3) {
+					display: flex;
+					align-items: center;
+					gap: 10%;
+					&.center {
+						text-align: center;
+					}
+				}
+			}
+			&.reverse {
+				flex-direction: row-reverse;
+			}
+			.text-image {
+				border-radius: 30px;
+				box-shadow: 0px 0px 20px -12px rgba(0, 0, 0, 0.35);
+				&.web {
+					height: auto;
+					width: clamp(20vw, 20vh, 100%);
+					@include responsive(3) {
+						float: right;
+						margin: 20px;
+					}
+				}
+				&.visual {
+					max-height: 100%;
+					width: clamp(20vw, 20vh, 100%);
+					@include responsive(3) {
+						float: left;
+						padding: 20px;
+					}
+				}
+				@include responsive(1) {
+					display: none;
+				}
+			}
+		}
+		@include responsive(1) {
+			margin: 17% auto;
+			width: 75%;
+			.column {
+				column-count: 1;
+				text-align: justify;
+				-webkit-hyphens: auto;
+				-moz-hyphens: auto;
+				hyphens: auto;
+				p {
+					width: 75%;
+					margin: 0 auto;
+				}
+			}
+		}
+		.project-content {
+			font-size: 2rem;
+			@include responsive(-4) {
+				column-count: 2;
+				column-gap: 10%;
+				column-rule: 3px dotted #46280c;
+			}
+			p {
+				font-family: "Times New Roman";
+				&:empty:before {
+					content: " ";
+					white-space: pre;
+				}
+			}
+			a {
+				color: #b3943f;
+			}
+			img {
+				max-width: 100%;
+				&.rounded {
+					border-radius: 8px;
+				}
+				&.small {
+					max-width: 50%;
+					padding: 5px;
+				}
+				&.medium {
+					max-width: 75%;
+				}
+				@include responsive(1) {
+					&.small {
+						max-width: 75%;
+					}
+					&.medium {
+						max-width: 87.5%;
+					}
+				}
+			}
+
+			blockquote {
+				font-style: italic;
+				color: #202020;
+				max-width: 70%;
+				border-top: 1px dashed #46280c;
+				border-bottom: 1px dashed #46280c;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				padding-right: 25px;
+				@include responsive(1) {
+					max-width: 100%;
+					text-align: center;
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+				&::before {
+					content: open-quote;
+				}
+				&::after {
+					content: close-quote;
+				}
+			}
+		}
+		.final-url {
+			font-size: 2rem;
+			text-decoration: underline;
+			color: #0d3317;
+		}
+	}
+	.main {
+		margin: 6% auto;
+		overflow-wrap: break-word;
+		@include responsive(1) {
+			width: 100%;
+			h2 {
+				text-align: center;
+				width: 75%;
+				margin: 0 auto;
+			}
+		}
+		h2 {
+			position: relative;
+			z-index: 1;
+		}
+	}
+	.about {
+		margin: 6% auto;
+		p {
+			font-size: clamp(22px, 1.15vw, 1.1vw);
+		}
+		@include responsive(3) {
+			margin: 18% auto;
+		}
+	}
+	.projects {
+		margin: 6% auto;
+		.projects-wrap {
+			background-color: #f5f2ee;
+			border-radius: 10px;
+		}
+		@include responsive(3) {
+			margin: 18% auto;
+		}
+		@include responsive(1) {
+			padding-top: 10%;
+			padding-bottom: 10%;
+		}
+	}
+	.projects-main {
+		margin: 5% auto;
+		@include responsive(1) {
+			padding-top: 10%;
+			padding-bottom: 10%;
+		}
+		.projects-wrap {
+			justify-content: flex-start;
+			flex-wrap: nowrap;
+			@include responsive(2) {
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			.card {
+				height: clamp(200px, 30%, 51%);
+				width: clamp(300px, 30%, 51%);
+				a {
+					.image-wrap {
+						height: clamp(250px, 10vw, 12vh);
+					}
+					.card-content {
+						padding-top: 10px;
+						padding-bottom: 10px;
+					}
+					&:hover {
+						.image-wrap {
+							box-shadow: 0px 0px 40px -12px rgba(0, 0, 0, 0.4);
+						}
+					}
+				}
+			}
+		}
+	}
+	.project {
+		margin: 6% auto;
+		@include responsive(3) {
+			margin: 10vh auto;
+		}
+	}
+	.contact {
+		margin: 6% auto 0 auto;
+		&.single {
+			p {
+				font-family: "Cabin Google", sans-serif;
+				font-size: clamp(14px, 1vw, 1.1vw);
+			}
+		}
+		@include responsive(3) {
+			margin: 18% auto;
+		}
+	}
+	.person {
+		height: auto;
+		min-height: 60vh;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		margin: 0 auto;
+		margin-top: 10%;
+		margin-bottom: 10%;
+		.info-wrap {
+			display: flex;
+			flex-direction: column;
+			padding: 5%;
+			span {
+				font-family: "Cabin Google", sans-serif;
+				font-size: 1.8rem;
+				padding-bottom: 5%;
+			}
+			.person-content {
+				color: #000;
+				font-family: "Times New Roman";
+				font-size: 2rem;
+			}
+		}
+		.sidebar {
+			height: 100%;
+			flex: 0 0 33%;
+			background-color: #f5f2ee;
+			border-radius: 8px;
+			ul {
+				list-style-type: none;
+				right: 0;
+				float: right;
+				text-align: left;
+				padding: 5%;
+				font-family: "Cabin Google", sans-serif;
+				li {
+					margin-top: 8%;
+					margin-bottom: 8%;
+					a {
+						color: #000;
+						text-decoration: none;
+						display: flex;
+						align-items: center;
+						svg {
+							margin-right: 10px;
+						}
+					}
+				}
+			}
+		}
+		img {
+			position: relative;
+			right: 0;
+			height: auto;
+			width: 100%;
+			object-fit: cover;
+			border-radius: 8px;
+		}
+		@include responsive(1) {
+			margin-top: 25%;
+			margin-bottom: 25%;
+			flex-direction: column;
+			gap: 20px;
+			.info-wrap {
+				text-align: center;
+				p {
+					max-width: 100%;
+					text-align: left;
+				}
+				span {
+					padding-bottom: 45px;
+				}
+			}
+			.sidebar {
+				flex: 0 0 40%;
+			}
+		}
+	}
+}
+
+.team-wrap {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: #f5f2ee;
+	border-radius: 10px;
+	padding: 50px;
+	.card {
+		height: clamp(250px, 50%, 50%);
+		width: clamp(275px, 25%, 50%);
+		padding: 15px;
+		a {
+			display: inline-block;
+			text-decoration: none;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			border-radius: 8px;
+			.image-wrap {
+				max-width: 100%;
+				display: inline-block;
+				height: clamp(180px, 25vw, 20vh);
+				min-width: 100px;
+				border-radius: 8px;
+				overflow: hidden;
+				transition: box-shadow 0.3s;
+				img {
+					height: 100%;
+					width: 100%;
+					object-fit: cover;
+					transition: transform 0.3s;
+				}
+			}
+			.card-content {
+				word-break: break-word;
+				text-align: center;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				font-family: "Cabin Google", sans-serif;
+				color: #252525;
+				h3 {
+					font-size: clamp(18px, 1.25vw, 1.4vw);
+				}
+				span {
+					font-size: clamp(16px, 0.85vw, 1vw);
+					color: #363636;
+				}
+			}
+			&:hover {
+				.image-wrap {
+					box-shadow: 0px 0px 45px -12px rgba(0, 0, 0, 0.25);
+					transition: box-shadow 0.3s;
+				}
+				img {
+					transform: scale(1.12);
+					transition: transform 0.7s;
+				}
+			}
+		}
+	}
+	@include responsive(3) {
+		justify-content: center;
+		padding: 10px;
+	}
+}
+
+.projects-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	.card {
+		height: clamp(300px, 50%, 51%);
+		width: clamp(300px, 50%, 51%);
+		padding: 2%;
+		a {
+			display: inline-block;
+			text-decoration: none;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			.image-wrap {
+				width: 100%;
+				height: clamp(350px, 25vw, 40vh);
+				display: inline-block;
+				border-radius: 8px;
+				overflow: hidden;
+				transition: box-shadow 0.3s;
+				@include responsive(1) {
+					height: clamp(250px, 25vw, 40vh);
+				}
+				img {
+					height: 100%;
+					width: 100%;
+					object-fit: cover;
+					transition: transform 0.3s;
+				}
+			}
+			.card-content {
+				word-break: break-word;
+				text-align: left;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				font-family: "Cabin Google", sans-serif;
+				color: #252525;
+				h3 {
+					font-size: clamp(18px, 1.25vw, 1.4vw);
+				}
+				span {
+					font-size: clamp(16px, 0.85vw, 1vw);
+					color: #363636;
+				}
+			}
+			&:hover {
+				.image-wrap {
+					box-shadow: 0px 0px 45px -12px rgba(0, 0, 0, 0.4);
+					transition: box-shadow 0.3s;
+				}
+				img {
+					transform: scale(1.12);
+					transition: transform 0.7s;
+				}
+			}
+		}
+	}
+}
