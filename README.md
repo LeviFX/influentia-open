@@ -1,6 +1,6 @@
 ## Influentia:
 
-Live version can be found at https://influentia.agency/
+Live version can be found at https://influentia.vercel.app/)
 
 ## Structure
 
